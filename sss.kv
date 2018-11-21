@@ -1,0 +1,64 @@
+#: import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+ScreenManagement:
+    transition: SlideTransition()
+    Screen1:
+    Screen2:
+    Screen3:
+
+<Screen1>:
+    name: "screen1"
+    FloatLayout:
+        Label:
+            text: "Screen 1"
+            pos_hint: {"top": 1.0}
+        Button:
+            on_release:
+                app.root.current = "screen2"
+                app.root.transition = SlideTransition(direction="left")
+            size_hint: 0.5, 0.8/3
+            pos_hint: {"bottom": 0.8, "left": 1}
+            text: "Screen 2 (slide left)"
+            font_size: 30
+
+<Screen2>:
+    name: "screen2"
+
+    FloatLayout:
+        Label:
+            text: "Screen 2"
+            pos_hint: {"top": 1.0}
+
+        Button:
+            on_release:
+                app.root.current = "screen1"
+                app.root.transition = SlideTransition(direction="right")
+            size_hint: 0.5, 0.8/3
+            pos_hint: {"top": 0.8, "right": 1}
+            text: "Screen 1 (slide right)"
+            font_size: 30
+
+        Button:
+            on_release:
+                app.root.current = "screen3"
+                app.root.transition = SlideTransition(direction="left")
+            size_hint: 0.5, 0.8/3
+            pos_hint: {"top": 0.8, "left": 1}
+            text: "Screen 3 (slide left)"
+            font_size: 30
+
+<Screen3>:
+    name: "screen3"
+
+    FloatLayout:
+        Label:
+            text: "Screen 3"
+            pos_hint: {"top": 1.0}
+        Button:
+            on_release:
+                app.root.current = "screen1"
+                app.root.transition = SlideTransition(direction="right")
+            size_hint: 0.5, 0.8/3
+            pos_hint: {"top": 0.8, "left": 1}
+            text: "Screen 1 (slide right)"
+            font_size: 30
